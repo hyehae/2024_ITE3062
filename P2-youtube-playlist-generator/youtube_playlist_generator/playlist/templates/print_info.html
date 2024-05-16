@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Info</title>
+</head>
+<body>
+    <h1>Music Info</h1>
+    <ul>
+        {% for info in music_info %}
+        <li>{{ info.time }} - {{ info.title }} by {{ info.artist }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Video Title: {{ title }}</h2>
+    <p>Description: {{ description }}</p>
+    <p>Channel Title: {{ channel_title }}</p>
+</body>
+</html>

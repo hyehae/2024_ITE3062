@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Info</title>
+</head>
+<body>
+    <h1>YouTube Video Info</h1>
+    <form id="videoInfoForm">
+        {% csrf_token %}
+        <label for="youtubeLink">YouTube Video URL:</label>
+        <input type="text" id="youtubeLink" name="youtubeLink" placeholder="Enter YouTube video URL" required>
+        <button type="submit">Get Video Info</button>
+    </form>
+
+    <div id="videoInfo"></div>
+
+    <script>
+        document.getElementById('videoInfoForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // 폼 기본 동작 막기
+
+            var youtubeLink = document.getElementById('youtubeLink').value;
+
+            // 서버에 POST 요청 보내기
+            fetch('/get_video_info/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({youtube_link: youtubeLink})
+            })
+            .then(response => response.json())
+            .then(data => {
+                // 받아온 데이터를 화면에 표시하기
+                document.getElementById('videoInfo').innerHTML = `
+                    <h2>Video Information</h2>
+                    <p><strong>Title:</strong> ${data.title}</p>
+                    <p><strong>Description:</strong> ${data.description}</p>
+                    <p><strong>Channel Title:</strong> ${data.channel_title}</p>
+                `;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('videoInfo').innerHTML = '<p>Error fetching video info.</p>';
+            });
+        });
+    </script>
+</body>
+</html>
