@@ -3,12 +3,15 @@ from django.http import JsonResponse
 from googleapiclient.discovery import build
 from google.oauth2.credentials import Credentials
 from django.views.decorators.csrf import csrf_exempt
+from dotenv import load_dotenv
+import os
 import requests
 import re
 import json
 
-# 유튜브 API 키
-api_key = 'myapikey'
+# .env 파일 활성화
+load_dotenv()
+api_key = os.getenv('YOUTUBE_API_KEY')
 
 # 유튜브 API 클라이언트 빌드
 youtube = build('youtube', 'v3', developerKey=api_key)
