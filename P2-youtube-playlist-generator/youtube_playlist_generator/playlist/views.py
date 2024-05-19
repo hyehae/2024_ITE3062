@@ -28,9 +28,8 @@ def extract_music_info(comments):
             if match:
                 #time = match.group('time')
                 title = match.group('title')
-                artist = match.group('artist')
+                artist = match.groupdict().get('artist', None)
                 music_info.append({'title': title, 'artist': artist})
-                #music_info.append({'time': time, 'title': title, 'artist': artist})
                 break
     
     return music_info
