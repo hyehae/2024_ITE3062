@@ -10,6 +10,9 @@ import googleapiclient.errors
 # OAuth 2.0 클라이언트 ID 파일 경로
 CLIENT_SECRETS_FILE = "client_secrets.json"
 
+#CLIENT_SECRETS_FILE = "credentials.json"
+#CLIENT_TOKEN_FILE = "client_secrets.json"
+
 # API 서비스 이름 및 버전
 API_SERVICE_NAME = 'youtube'
 API_VERSION = 'v3'

@@ -217,6 +217,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+credentials.json
+credentials2.json
 client_secrets.json
 pip-install-list.txt
 
